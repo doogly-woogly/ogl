@@ -1,5 +1,10 @@
 package com.example.gdc11;
 
+import android.hardware.Sensor;
+import android.hardware.SensorEvent;
+import android.hardware.SensorEventListener;
+import android.hardware.SensorManager;
+
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.nio.MappedByteBuffer;
@@ -46,6 +51,10 @@ public class GDC11Activity extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         GLSurfaceView view = new TouchGLView(this);
+
+        SensorManager manager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
+        Sensor accelerometer = manager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
+
         setContentView(view);
     }
 
@@ -134,11 +143,18 @@ public class GDC11Activity extends Activity {
                         // thread.
                         // In a real app, you'd want to divide these by
                         // the display resolution first.
-                        mRenderer.drag(dx, dy);
+                        //mRenderer.drag(dx, dy);
                     }});
             mLastNonTapTouchEventTimeNS = System.nanoTime();
             return true;
         }
+    	@Override
+
+	public void onSensorChanged(SensorEvent event) {
+	mRenderer.drag(event.values[0], event.values[1]);// event.values[2]
+
+    	}
+
 
         @Override
         public void onShowPress(MotionEvent e) {
