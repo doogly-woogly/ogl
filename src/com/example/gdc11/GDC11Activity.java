@@ -44,6 +44,7 @@ public class GDC11Activity extends Activity implements SensorEventListener {
     private static final boolean kUseCompressedTextures = true;
     private static final boolean kUseMultisampling = false;
 
+private GDC11Renderer mRenderer;
     // If |kUseMultisampling| is set, this is what chose the multisampling config.
     private MultisampleConfigChooser mConfigChooser;
 
