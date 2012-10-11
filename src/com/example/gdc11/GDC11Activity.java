@@ -53,31 +53,9 @@ private GDC11Renderer mRenderer;
         super.onCreate(savedInstanceState);
         GLSurfaceView view = new TouchGLView(this);
 
-        SensorManager manager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
-        Sensor accelerometer = manager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
-
-        if(!manager.registerListener(this, accelerometer, SensorManager.SENSOR_DELAY_GAME)){}
 
         setContentView(view);
     }
-    @Override
-    public void onAccuracyChanged(Sensor sensor, int accuracy) {
-
-       
-
-    }
-	@Override
-  	public void onSensorChanged(final SensorEvent event) {
-	
-                  
-                        // This Runnable will be ex
-             
-                    
-                        	mRenderer.drag(event.values[0], event.values[1]);// event.values[2]
-     
-
-
-    	}
 
     // Subclass GLSurfaceView to receive touch events. This class does nothing
     // but touch event handling.
@@ -103,6 +81,12 @@ private GDC11Renderer mRenderer;
             if (kUseMultisampling)
                 setEGLConfigChooser(mConfigChooser = new MultisampleConfigChooser());
             setRenderer(mRenderer = new GDC11Renderer());
+
+            //Accelerometer
+            SensorManager manager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
+            Sensor accelerometer = manager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
+
+            if(!manager.registerListener(this, accelerometer, SensorManager.SENSOR_DELAY_GAME)){}
         }
 
         @Override
@@ -112,6 +96,23 @@ private GDC11Renderer mRenderer;
             mTapDetector.onTouchEvent(e);
             return true;
         }
+
+
+        @Override
+        public void onAccuracyChanged(Sensor sensor, int accuracy) {
+
+       
+
+        }
+	@Override
+  	public void onSensorChanged(final SensorEvent event) {
+	
+            mRenderer.drag(event.values[0], event.values[1]);// event.values[2]
+     
+
+
+    	}
+
 
         @Override
         public boolean onScale(ScaleGestureDetector detector) {
