@@ -1,0 +1,266 @@
+========== Aapt ==========
+Found 13 custom asset files in /mnt/sdcard/andjedi/projects/earth/assets/
+Locale/Vendor pairs:
+   /
+   /
+   /
+   /
+
+Files:
+  assets/earth_map_0.pkm.jet
+      Src: /mnt/sdcard/andjedi/projects/earth/assets/earth_map_0.pkm.jet
+  assets/earth_map_1.pkm
+      Src: /mnt/sdcard/andjedi/projects/earth/assets/earth_map_1.pkm
+  assets/earth_map_10.pkm
+      Src: /mnt/sdcard/andjedi/projects/earth/assets/earth_map_10.pkm
+  assets/earth_map_11.pkm
+      Src: /mnt/sdcard/andjedi/projects/earth/assets/earth_map_11.pkm
+  assets/earth_map_2.pkm
+      Src: /mnt/sdcard/andjedi/projects/earth/assets/earth_map_2.pkm
+  assets/earth_map_3.pkm
+      Src: /mnt/sdcard/andjedi/projects/earth/assets/earth_map_3.pkm
+  assets/earth_map_4.pkm
+      Src: /mnt/sdcard/andjedi/projects/earth/assets/earth_map_4.pkm
+  assets/earth_map_5.pkm
+      Src: /mnt/sdcard/andjedi/projects/earth/assets/earth_map_5.pkm
+  assets/earth_map_6.pkm
+      Src: /mnt/sdcard/andjedi/projects/earth/assets/earth_map_6.pkm
+  assets/earth_map_7.pkm
+      Src: /mnt/sdcard/andjedi/projects/earth/assets/earth_map_7.pkm
+  assets/earth_map_8.pkm
+      Src: /mnt/sdcard/andjedi/projects/earth/assets/earth_map_8.pkm
+  assets/earth_map_9.pkm
+      Src: /mnt/sdcard/andjedi/projects/earth/assets/earth_map_9.pkm
+  assets/points_3f3f2f.jet
+      Src: /mnt/sdcard/andjedi/projects/earth/assets/points_3f3f2f.jet
+  drawable/jpg_earth_map.jpg
+      Src: /mnt/sdcard/andjedi/projects/earth/res/drawable/jpg_earth_map.jpg
+  drawable-hdpi/icon.png
+      Src: /mnt/sdcard/andjedi/projects/earth/res/drawable-hdpi/icon.png
+  drawable-ldpi/icon.png
+      Src: /mnt/sdcard/andjedi/projects/earth/res/drawable-ldpi/icon.png
+  drawable-mdpi/icon.png
+      Src: /mnt/sdcard/andjedi/projects/earth/res/drawable-mdpi/icon.png
+  raw/points_3f3f2f.jet
+      Src: /mnt/sdcard/andjedi/projects/earth/res/raw/points_3f3f2f.jet
+  raw/tris.jet
+      Src: /mnt/sdcard/andjedi/projects/earth/res/raw/tris.jet
+  raw/tristrips.jet
+      Src: /mnt/sdcard/andjedi/projects/earth/res/raw/tristrips.jet
+  values/strings.xml
+      Src: /mnt/sdcard/andjedi/projects/earth/res/values/strings.xml
+  AndroidManifest.xml
+      Src: /mnt/sdcard/andjedi/projects/earth/AndroidManifest.xml
+Including resources from package: /mnt/sdcard/andjedi/libs/2.2_level8.jar
+applyFileOverlay for drawable
+applyFileOverlay for layout
+applyFileOverlay for anim
+applyFileOverlay for xml
+applyFileOverlay for raw
+applyFileOverlay for color
+applyFileOverlay for menu
+    (processed image /mnt/sdcard/andjedi/projects/earth/res/drawable-hdpi/icon.png: 95% size of source)
+    (processed image /mnt/sdcard/andjedi/projects/earth/res/drawable-ldpi/icon.png: 89% size of source)
+    (processed image /mnt/sdcard/andjedi/projects/earth/res/drawable-mdpi/icon.png: 85% size of source)
+    (new resource id icon from drawable-hdpi/icon.png #generated)
+    (new resource id icon from drawable-hdpi/icon.png #generated)
+    (new resource id icon from drawable-hdpi/icon.png #generated)
+    (new resource id jpg_earth_map from /mnt/sdcard/andjedi/projects/earth/res/drawable/jpg_earth_map.jpg)
+    (new resource id points_3f3f2f from /mnt/sdcard/andjedi/projects/earth/res/raw/points_3f3f2f.jet)
+    (new resource id tris from /mnt/sdcard/andjedi/projects/earth/res/raw/tris.jet)
+    (new resource id tristrips from /mnt/sdcard/andjedi/projects/earth/res/raw/tristrips.jet)
+  Writing symbols for class R.
+Opening '/mnt/sdcard/andjedi/projects/earth/out/earth.apk.res'
+Writing all files...
+      'assets/earth_map_0.pkm.jet' (not compressed)
+      'assets/earth_map_1.pkm' (compressed 36%)
+      'assets/earth_map_10.pkm' (not compressed)
+      'assets/earth_map_11.pkm' (not compressed)
+      'assets/earth_map_2.pkm' (compressed 32%)
+      'assets/earth_map_3.pkm' (compressed 24%)
+      'assets/earth_map_4.pkm' (compressed 14%)
+      'assets/earth_map_5.pkm' (not compressed)
+      'assets/earth_map_6.pkm' (not compressed)
+      'assets/earth_map_7.pkm' (not compressed)
+      'assets/earth_map_8.pkm' (not compressed)
+      'assets/earth_map_9.pkm' (compressed 8%)
+      'assets/points_3f3f2f.jet' (not compressed)
+      'res/drawable/jpg_earth_map.jpg' (not compressed)
+      'res/raw/points_3f3f2f.jet' (not compressed)
+      'res/raw/tris.jet' (not compressed)
+      'res/raw/tristrips.jet' (not compressed)
+      'AndroidManifest.xml' (compressed 62%)
+      'resources.arsc' (not compressed)
+      'res/drawable-hdpi/icon.png' (not compressed)
+      'res/drawable-ldpi/icon.png' (not compressed)
+      'res/drawable-mdpi/icon.png' (not compressed)
+Generated 22 files
+Included 0 files from jar/zip files.
+Checking for deleted files
+Done!
+========== Compile ==========
+[parsing    /mnt/sdcard/andjedi/projects/earth/src/com/example/gdc11/GLES20Fix.java - #1/4]
+[parsing    /mnt/sdcard/andjedi/projects/earth/src/com/example/gdc11/MultisampleConfigChooser.java - #2/4]
+[parsing    /mnt/sdcard/andjedi/projects/earth/src/com/example/gdc11/Programs.java - #3/4]
+[parsing    /mnt/sdcard/andjedi/projects/earth/src/com/example/gdc11/GDC11Activity.java - #4/4]
+[reading    java/lang/Object.class]
+[reading    android/opengl/GLSurfaceView.class]
+[reading    android/view/SurfaceView.class]
+[reading    android/view/View.class]
+[reading    android/view/accessibility/AccessibilityEventSource.class]
+[reading    android/view/KeyEvent$Callback.class]
+[reading    android/view/KeyEvent.class]
+[reading    android/os/Parcelable$Creator.class]
+[reading    android/os/Parcelable.class]
+[reading    android/graphics/drawable/Drawable$Callback.class]
+[reading    android/graphics/drawable/Drawable.class]
+[reading    android/view/SurfaceHolder$Callback.class]
+[reading    android/view/SurfaceHolder.class]
+[reading    android/opengl/GLSurfaceView$EGLConfigChooser.class]
+[reading    android/app/Activity.class]
+[reading    android/view/ContextThemeWrapper.class]
+[reading    android/content/ContextWrapper.class]
+[reading    android/content/Context.class]
+[reading    android/content/ComponentCallbacks.class]
+[reading    android/view/View$OnCreateContextMenuListener.class]
+[reading    android/view/Window$Callback.class]
+[reading    android/view/Window.class]
+[reading    android/view/LayoutInflater$Factory.class]
+[reading    android/view/LayoutInflater.class]
+[reading    android/view/GestureDetector.class]
+[reading    android/view/GestureDetector$OnGestureListener.class]
+[reading    android/view/ScaleGestureDetector.class]
+[reading    android/view/ScaleGestureDetector$OnScaleGestureListener.class]
+[reading    android/opengl/GLSurfaceView$Renderer.class]
+[reading    java/lang/Override.class]
+[reading    javax/microedition/khronos/egl/EGL10.class]
+[reading    javax/microedition/khronos/egl/EGLDisplay.class]
+[reading    javax/microedition/khronos/egl/EGLConfig.class]
+[reading    java/lang/String.class]
+[reading    android/view/MotionEvent.class]
+[reading    javax/microedition/khronos/opengles/GL10.class]
+[reading    android/os/Bundle.class]
+[analyzing  /mnt/sdcard/andjedi/projects/earth/src/com/example/gdc11/GLES20Fix.java - #1/4]
+[reading    java/lang/System.class]
+[analyzing  /mnt/sdcard/andjedi/projects/earth/src/com/example/gdc11/MultisampleConfigChooser.java - #2/4]
+[writing    com/example/gdc11/GLES20Fix.class - #1]
+[completed  /mnt/sdcard/andjedi/projects/earth/src/com/example/gdc11/GLES20Fix.java - #1/4]
+[reading    android/util/Log.class]
+[reading    javax/microedition/khronos/egl/EGL.class]
+[reading    java/lang/IllegalArgumentException.class]
+[reading    java/lang/RuntimeException.class]
+[reading    java/lang/Exception.class]
+[reading    java/lang/Throwable.class]
+[writing    com/example/gdc11/MultisampleConfigChooser.class - #2]
+[analyzing  /mnt/sdcard/andjedi/projects/earth/src/com/example/gdc11/Programs.java - #3/4]
+[reading    android/opengl/GLES20.class]
+[completed  /mnt/sdcard/andjedi/projects/earth/src/com/example/gdc11/MultisampleConfigChooser.java - #2/4]
+[analyzing  /mnt/sdcard/andjedi/projects/earth/src/com/example/gdc11/GDC11Activity.java - #4/4]
+[writing    com/example/gdc11/Programs.class - #3]
+[completed  /mnt/sdcard/andjedi/projects/earth/src/com/example/gdc11/Programs.java - #3/4]
+[reading    java/io/FileInputStream.class]
+[reading    java/io/IOException.class]
+[reading    java/nio/MappedByteBuffer.class]
+[reading    java/nio/channels/FileChannel.class]
+[reading    java/nio/channels/FileChannel$MapMode.class]
+[reading    android/content/res/AssetFileDescriptor.class]
+[reading    android/content/res/Resources.class]
+[reading    android/content/res/Resources$NotFoundException.class]
+[reading    android/graphics/Bitmap.class]
+[reading    android/graphics/BitmapFactory.class]
+[reading    android/opengl/ETC1Util.class]
+[reading    android/opengl/GLUtils.class]
+[reading    android/opengl/Matrix.class]
+[reading    android/content/res/Resources$Theme.class]
+[reading    android/content/Intent.class]
+[reading    android/content/IntentSender.class]
+[reading    android/content/IntentSender$SendIntentException.class]
+[reading    android/content/pm/PackageManager$NameNotFoundException.class]
+[reading    android/content/pm/PackageManager.class]
+[reading    android/net/Uri.class]
+[reading    android/content/ComponentName.class]
+[reading    android/content/ServiceConnection.class]
+[reading    android/content/BroadcastReceiver.class]
+[reading    android/os/Handler.class]
+[reading    android/content/IntentFilter.class]
+[reading    java/io/InputStream.class]
+[reading    java/io/File.class]
+[reading    android/database/sqlite/SQLiteDatabase.class]
+[reading    android/database/sqlite/SQLiteDatabase$CursorFactory.class]
+[reading    java/io/FileOutputStream.class]
+[reading    java/io/FileNotFoundException.class]
+[reading    android/content/SharedPreferences.class]
+[reading    android/content/pm/ApplicationInfo.class]
+[reading    java/lang/ClassLoader.class]
+[reading    android/os/Looper.class]
+[reading    android/content/ContentResolver.class]
+[reading    android/content/res/AssetManager.class]
+[reading    android/util/AttributeSet.class]
+[reading    android/view/Menu.class]
+[reading    android/view/WindowManager$LayoutParams.class]
+[reading    android/view/WindowManager.class]
+[reading    android/view/MenuItem.class]
+[reading    android/view/accessibility/AccessibilityEvent.class]
+[reading    android/view/ContextMenu$ContextMenuInfo.class]
+[reading    android/view/ContextMenu.class]
+[reading    android/content/res/Configuration.class]
+[reading    android/graphics/Canvas.class]
+[reading    java/lang/Runnable.class]
+[reading    java/lang/Math.class]
+[reading    java/nio/channels/spi/AbstractInterruptibleChannel.class]
+[reading    java/nio/channels/ByteChannel.class]
+[reading    java/nio/channels/ScatteringByteChannel.class]
+[reading    java/nio/channels/GatheringByteChannel.class]
+[reading    java/nio/channels/WritableByteChannel.class]
+[reading    java/nio/channels/ReadableByteChannel.class]
+[reading    java/nio/channels/Channel.class]
+[reading    java/io/Closeable.class]
+[reading    java/nio/channels/InterruptibleChannel.class]
+[reading    java/nio/Buffer.class]
+[reading    java/nio/ByteBuffer.class]
+[parsing    /mnt/sdcard/andjedi/projects/earth/gen/com/example/gdc11/R.java - #5/5]
+[reading    java/util/Locale.class]
+[reading    java/lang/Integer.class]
+[reading    android/opengl/ETC1Util$ETC1Texture.class]
+[reading    android/graphics/BitmapFactory$Options.class]
+[reading    android/graphics/Bitmap$Config.class]
+[analyzing  /mnt/sdcard/andjedi/projects/earth/gen/com/example/gdc11/R.java - #5/5]
+----------
+1. WARNING in /mnt/sdcard/andjedi/projects/earth/src/com/example/gdc11/GDC11Activity.java (at line 252)
+	if (kUseMultisampling && mConfigChooser.usesCoverageAa()) {
+	                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Dead code
+----------
+2. WARNING in /mnt/sdcard/andjedi/projects/earth/src/com/example/gdc11/GDC11Activity.java (at line 252)
+	if (kUseMultisampling && mConfigChooser.usesCoverageAa()) {
+              final int GL_COVERAGE_BUFFER_BIT_NV = 0x8000;
+              clearMask |= GL_COVERAGE_BUFFER_BIT_NV;
+            }
+	                                                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Dead code
+----------
+[writing    com/example/gdc11/GDC11Activity$GDC11Renderer.class - #4]
+[writing    com/example/gdc11/GDC11Activity$TouchGLView$3.class - #5]
+[writing    com/example/gdc11/GDC11Activity$TouchGLView.class - #6]
+[writing    com/example/gdc11/GDC11Activity$TouchGLView$1.class - #7]
+[writing    com/example/gdc11/GDC11Activity.class - #8]
+[writing    com/example/gdc11/GDC11Activity$TouchGLView$2.class - #9]
+[writing    com/example/gdc11/GDC11Activity$TouchGLView$3$1.class - #10]
+[completed  /mnt/sdcard/andjedi/projects/earth/src/com/example/gdc11/GDC11Activity.java - #4/5]
+[writing    com/example/gdc11/R.class - #11]
+[writing    com/example/gdc11/R$attr.class - #12]
+[writing    com/example/gdc11/R$raw.class - #13]
+[writing    com/example/gdc11/R$string.class - #14]
+[writing    com/example/gdc11/R$drawable.class - #15]
+[completed  /mnt/sdcard/andjedi/projects/earth/gen/com/example/gdc11/R.java - #5/5]
+[5 units compiled]
+2 problems (2 warnings)[15 .class files generated]
+========== Dx ==========
+Done in 2 sec.
+ExitValue: 0
+========== Build ==========
+Done in 2 sec.
+ExitValue: 0
+========== Sign ==========
+Done in 0 sec.
+ExitValue: 0
