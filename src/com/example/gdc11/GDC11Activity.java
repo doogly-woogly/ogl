@@ -36,7 +36,7 @@ import android.view.ScaleGestureDetector;
 // textures, how to do handle touch input, how to use VBOs, and
 // generally how to draw with OpenGL ES 2.0. For easier navigation,
 // almost all code is contained in this single class.
-public class GDC11Activity extends Activity implements SensorEventListener {
+public class GDC11Activity extends Activity {
     static private final String kTag = "GDC11";
 
     // Tweakables.
@@ -61,7 +61,7 @@ private GDC11Renderer mRenderer;
     // but touch event handling.
     private class TouchGLView extends GLSurfaceView
             implements GestureDetector.OnGestureListener,
-                       ScaleGestureDetector.OnScaleGestureListener {
+                       ScaleGestureDetector.OnScaleGestureListener, SensorEventListener {
         private GDC11Renderer mRenderer;
         private GestureDetector mTapDetector;
         private ScaleGestureDetector mScaleDetector;
