@@ -199,11 +199,11 @@ public class GDC11Activity extends Activity {
         private int mLightVectorLoc;
 
         // Camera stuff.
-        private float mPhi, mZ = 50.0f;
+        private float mPhi, mZ = 0.0f;
         private float[] mProjectionMatrix = new float[16];
         private float[] mViewMatrix = new float[16];
         private float[] mViewProjectionMatrix = new float[16];
-        private float[] mLightVector = { 2/3.f, 1/3.f, 2/3.f };  // Needs to be normalized
+        private float[] mLightVector = { -2/3.f, -1/3.f, -2/3.f };  // Needs to be normalized
         private float[] mTransformedLightVector = new float[3];
 
         // Updates mViewProjectionMatrix with the current camera position.
