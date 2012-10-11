@@ -59,6 +59,25 @@ public class GDC11Activity extends Activity implements SensorEventListener {
 
         setContentView(view);
     }
+    @Override
+    public void onAccuracyChanged(Sensor sensor, int accuracy) {
+
+       
+
+    }
+	@Override
+  	public void onSensorChanged(SensorEvent event) {
+		queueEvent(new Runnable() {
+                    public void run() {
+                        // This Runnable will be executed on the render
+                        // thread.
+                        // In a real app, you'd want to divide these by
+                        // the display resolution first.
+                        	mRenderer.drag(event.values[0], event.values[1]);// event.values[2]
+                    }});
+
+
+    	}
 
     // Subclass GLSurfaceView to receive touch events. This class does nothing
     // but touch event handling.
@@ -150,25 +169,7 @@ public class GDC11Activity extends Activity implements SensorEventListener {
             mLastNonTapTouchEventTimeNS = System.nanoTime();
             return true;
         }
-    @Override
-    public void onAccuracyChanged(Sensor sensor, int accuracy) {
 
-       
-
-    }
-	@Override
-  	public void onSensorChanged(SensorEvent event) {
-		queueEvent(new Runnable() {
-                    public void run() {
-                        // This Runnable will be executed on the render
-                        // thread.
-                        // In a real app, you'd want to divide these by
-                        // the display resolution first.
-                        	mRenderer.drag(event.values[0], event.values[1]);// event.values[2]
-                    }});
-
-
-    	}
 
 
         @Override
