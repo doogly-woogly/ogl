@@ -44,7 +44,6 @@ public class GDC11Activity extends Activity {
     private static final boolean kUseCompressedTextures = true;
     private static final boolean kUseMultisampling = false;
 
-private GDC11Renderer mRenderer;
     // If |kUseMultisampling| is set, this is what chose the multisampling config.
     private MultisampleConfigChooser mConfigChooser;
 
@@ -61,7 +60,8 @@ private GDC11Renderer mRenderer;
     // but touch event handling.
     private class TouchGLView extends GLSurfaceView
             implements GestureDetector.OnGestureListener,
-                       ScaleGestureDetector.OnScaleGestureListener, SensorEventListener {
+                       ScaleGestureDetector.OnScaleGestureListener, 
+                       SensorEventListener {
         private GDC11Renderer mRenderer;
         private GestureDetector mTapDetector;
         private ScaleGestureDetector mScaleDetector;
@@ -106,9 +106,10 @@ private GDC11Renderer mRenderer;
         }
 	@Override
   	public void onSensorChanged(final SensorEvent event) {
-	
+	    queueEvent(new Runnable() {
+                    public void run() {
             mRenderer.drag(event.values[0], event.values[1]);// event.values[2]
-     
+        }});
 
 
     	}
