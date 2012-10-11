@@ -150,6 +150,13 @@ public class GDC11Activity extends Activity implements SensorEventListener {
             mLastNonTapTouchEventTimeNS = System.nanoTime();
             return true;
         }
+    @Override
+
+    public void onAccuracyChanged(Sensor sensor, int accuracy) {
+
+       
+
+    }
 	@Override
     	public void onSensorChanged(SensorEvent event) {
 		queueEvent(new Runnable() {
