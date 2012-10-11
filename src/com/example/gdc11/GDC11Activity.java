@@ -106,10 +106,10 @@ public class GDC11Activity extends Activity {
         }
 	@Override
   	public void onSensorChanged(final SensorEvent event) {
-	    queueEvent(new Runnable() {
+	/*    queueEvent(new Runnable() {
                     public void run() {
             mRenderer.drag(event.values[0], event.values[1]);// event.values[2]
-        }});
+        }});*/
 
 
     	}
