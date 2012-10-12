@@ -258,9 +258,9 @@ mViewMatrix[1]=0;
 mViewMatrix[2]=0;
 mViewMatrix[3]=0;
 
-mViewMatrix[4]=0;
-mViewMatrix[5]=1;
-mViewMatrix[6]=0;
+mViewMatrix[4]=vY[0];
+mViewMatrix[5]=vY[1];
+mViewMatrix[6]=vY[2];
 mViewMatrix[7]=0;
 
 mViewMatrix[8]=0;
