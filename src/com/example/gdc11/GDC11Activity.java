@@ -242,9 +242,9 @@ queueEvent(new Runnable() {
             Matrix.rotateM(mViewMatrix, 0, -90, 1, 0, 0);
 */
 
-private float[] vX=new float[3];
-private float[] vY=new float[3];
-private float[] vZ=new float[3];
+float[] vX=new float[3];
+float[] vY=new float[3];
+float[] vZ=new float[3];
 
 vY[0]=gX;
 vY[1]=gY;
