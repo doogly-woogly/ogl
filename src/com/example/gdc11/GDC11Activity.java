@@ -253,9 +253,21 @@ float m=(float)Math.sqrt(vY[0]*vY[0]+vY[1]*vY[1]+vY[2]*vY[2]);
 vY[0]/=m;
 vY[1]/=m;
 vY[2]/=m;
-mViewMatrix[0]=1;
-mViewMatrix[1]=0;
-mViewMatrix[2]=0;
+
+vZ[0]=0;
+vZ[0]=0;
+vZ[0]=1;
+vX[0]=vY[1]*vZ[2] - vY[2]*vZ[1];
+vX[1]=vY[2]*vZ[0] - vY[0]*vZ[2];
+vX[2]=vY[0]*vZ[1] - vY[1]*vZ[0];
+
+vZ[0]=vX[1]*vY[2] - vX[2]*vY[1];
+vZ[1]=vX[2]*vY[0] - vX[0]*vY[2];
+vZ[2]=vX[0]*vY[1] - vX[1]*vY[0];
+
+mViewMatrix[0]=vX[0];
+mViewMatrix[1]=vX[1];
+mViewMatrix[2]=vX[2];
 mViewMatrix[3]=0;
 
 mViewMatrix[4]=vY[0];
@@ -263,9 +275,9 @@ mViewMatrix[5]=vY[1];
 mViewMatrix[6]=vY[2];
 mViewMatrix[7]=0;
 
-mViewMatrix[8]=0;
-mViewMatrix[9]=0;
-mViewMatrix[10]=1;
+mViewMatrix[8]=vZ[0];
+mViewMatrix[9]=vZ[1];
+mViewMatrix[10]=vZ[2];
 mViewMatrix[11]=0;
 
 mViewMatrix[12]=0;
