@@ -151,14 +151,13 @@ public class GDC11Activity extends Activity implements SensorEventListener {
             return true;
         }
     @Override
-
     public void onAccuracyChanged(Sensor sensor, int accuracy) {
 
        
 
     }
 	@Override
-    	public void onSensorChanged(SensorEvent event) {
+  	public void onSensorChanged(SensorEvent event) {
 		queueEvent(new Runnable() {
                     public void run() {
                         // This Runnable will be executed on the render
