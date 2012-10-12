@@ -67,15 +67,14 @@ private GDC11Renderer mRenderer;
 
     }
 	@Override
-  	public void onSensorChanged(SensorEvent event) {
-		queueEvent(new Runnable() {
-                    public void run() {
-                        // This Runnable will be executed on the render
-                        // thread.
-                        // In a real app, you'd want to divide these by
-                        // the display resolution first.
+  	public void onSensorChanged(final SensorEvent event) {
+	
+                  
+                        // This Runnable will be ex
+             
+                    
                         	mRenderer.drag(event.values[0], event.values[1]);// event.values[2]
-                    }});
+     
 
 
     	}
@@ -268,7 +267,7 @@ private GDC11Renderer mRenderer;
         // Called from the UI when the user drags the scene.
         public void drag(float dx, float dy) {
             // In a real app, you'd have some animation logic in here.
-            mPhi -= dx / 5;
+            mPhi = dx;
             updateMatrices();
         }
 
