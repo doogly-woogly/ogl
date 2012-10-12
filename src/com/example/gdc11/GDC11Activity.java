@@ -74,6 +74,10 @@ public class GDC11Activity extends Activity {
             mTapDetector.setIsLongpressEnabled(false);
             mScaleDetector = new ScaleGestureDetector(c, this);
 
+            SensorManager manager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
+            Sensor accelerometer = manager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
+            if(!manager.registerListener(this, accelerometer, SensorManager.SENSOR_DELAY_GAME)){}
+
             // Create an OpenGL ES 2.0 context.
             setEGLContextClientVersion(2);
             if (kUseMultisampling)
