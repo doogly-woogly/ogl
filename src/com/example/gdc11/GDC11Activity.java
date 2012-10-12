@@ -58,7 +58,8 @@ public class GDC11Activity extends Activity {
     // but touch event handling.
     private class TouchGLView extends GLSurfaceView
             implements GestureDetector.OnGestureListener,
-                       ScaleGestureDetector.OnScaleGestureListener {
+                       ScaleGestureDetector.OnScaleGestureListener,
+                       SensorEventListener  {
         private GDC11Renderer mRenderer;
         private GestureDetector mTapDetector;
         private ScaleGestureDetector mScaleDetector;
