@@ -81,6 +81,12 @@ public class GDC11Activity extends Activity {
             setRenderer(mRenderer = new GDC11Renderer());
         }
 
+@Override
+public void onAccuracyChanged(Sensor sensor, int accuracy) {}
+
+@Override
+public void onSensorChanged(SensorEvent event) {}
+
         @Override
         public boolean onTouchEvent(final MotionEvent e) {
             // Forward touch events to the gesture detectors.
