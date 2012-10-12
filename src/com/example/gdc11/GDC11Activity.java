@@ -303,7 +303,9 @@ mViewMatrix[15]=1;
         // Set orientation
         public void orientate(float dx, float dy, float dz, float dm) {
             // In a real app, you'd have some animation logic in here.
-            mPhi -= dx / 5;
+            gX=dx;
+            gY=dy;
+            gZ=dz;
             updateMatrices();
         }
 
