@@ -90,13 +90,14 @@ public void onAccuracyChanged(Sensor sensor, int accuracy) {}
 
 @Override
 public void onSensorChanged(SensorEvent event) {
+final float x=event.values[0],y=event.values[1],z=event.values[2];
 queueEvent(new Runnable() {
                     public void run() {
                         // This Runnable will be executed on the render
                         // thread.
                         // In a real app, you'd want to divide these by
                         // the display resolution first.
-                        mRenderer.orientate(event.values[0],event.values[1],event.values[2],1.0f);
+                        mRenderer.orientate(x,y,z,1.0f);
                     }});
 }
 
