@@ -226,6 +226,7 @@ queueEvent(new Runnable() {
 
         // Camera stuff.
         private float mPhi, mZ = 0.0f;
+        private float gX,gY,gZ=0.0f;
         private float[] mProjectionMatrix = new float[16];
         private float[] mViewMatrix = new float[16];
         private float[] mViewProjectionMatrix = new float[16];
@@ -234,10 +235,32 @@ queueEvent(new Runnable() {
 
         // Updates mViewProjectionMatrix with the current camera position.
         private void updateMatrices() {
+/*
             Matrix.setIdentityM(mViewMatrix, 0);
             Matrix.translateM(mViewMatrix, 0, 0, 0, -mZ);
             Matrix.rotateM(mViewMatrix, 0, mPhi, 0, 1, 0);
             Matrix.rotateM(mViewMatrix, 0, -90, 1, 0, 0);
+*/
+mViewMatrix[0]=1;
+mViewMatrix[1]=0;
+mViewMatrix[2]=0;
+mViewMatrix[3]=0;
+
+mViewMatrix[4]=0;
+mViewMatrix[5]=1;
+mViewMatrix[6]=0;
+mViewMatrix[7]=0;
+
+mViewMatrix[8]=0;
+mViewMatrix[9]=0;
+mViewMatrix[10]=1;
+mViewMatrix[11]=0;
+
+mViewMatrix[12]=0;
+mViewMatrix[13]=0;
+mViewMatrix[14]=0;
+mViewMatrix[15]=1;
+
             Matrix.multiplyMM(
                     mViewProjectionMatrix, 0, mProjectionMatrix, 0, mViewMatrix, 0);
 
@@ -260,6 +283,13 @@ queueEvent(new Runnable() {
 
         // Called from the UI when the user drags the scene.
         public void drag(float dx, float dy) {
+            // In a real app, you'd have some animation logic in here.
+            mPhi -= dx / 5;
+            updateMatrices();
+        }
+
+        // Set orientation
+        public void orientate(float dx, float dy, float dz, float dm) {
             // In a real app, you'd have some animation logic in here.
             mPhi -= dx / 5;
             updateMatrices();
