@@ -1,10 +1,10 @@
 package com.example.gdc11;
 
-import android.hardware.Sensor;
+/*import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
-
+*/
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.nio.MappedByteBuffer;
@@ -60,8 +60,9 @@ public class GDC11Activity extends Activity {
     // but touch event handling.
     private class TouchGLView extends GLSurfaceView
             implements GestureDetector.OnGestureListener,
-                       ScaleGestureDetector.OnScaleGestureListener, 
-                       SensorEventListener {
+                       ScaleGestureDetector.OnScaleGestureListener
+					   //, SensorEventListener 
+					   {
         private GDC11Renderer mRenderer;
         private GestureDetector mTapDetector;
         private ScaleGestureDetector mScaleDetector;
@@ -83,11 +84,10 @@ public class GDC11Activity extends Activity {
             setRenderer(mRenderer = new GDC11Renderer());
 
             //Accelerometer
-            SensorManager manager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
+        /*    SensorManager manager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
             Sensor accelerometer = manager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
-
             if(!manager.registerListener(this, accelerometer, SensorManager.SENSOR_DELAY_GAME)){}
-        }
+       */ }
 
         @Override
         public boolean onTouchEvent(final MotionEvent e) {
@@ -96,23 +96,19 @@ public class GDC11Activity extends Activity {
             mTapDetector.onTouchEvent(e);
             return true;
         }
-
+/*
 
         @Override
-        public void onAccuracyChanged(Sensor sensor, int accuracy) {
-
-       
-
-        }
+        public void onAccuracyChanged(Sensor sensor, int accuracy) {}
 	@Override
-  	public void onSensorChanged(final SensorEvent event) {
+  	public void onSensorChanged(SensorEvent event) {
 	/*    queueEvent(new Runnable() {
                     public void run() {
             mRenderer.drag(event.values[0], event.values[1]);// event.values[2]
-        }});*/
+        }});
 
 
-    	}
+    	}*/
 
 
         @Override
@@ -166,7 +162,7 @@ public class GDC11Activity extends Activity {
                         // thread.
                         // In a real app, you'd want to divide these by
                         // the display resolution first.
-                        //mRenderer.drag(dx, dy);
+                        mRenderer.drag(dx, dy);
                     }});
             mLastNonTapTouchEventTimeNS = System.nanoTime();
             return true;
@@ -269,7 +265,7 @@ public class GDC11Activity extends Activity {
         // Called from the UI when the user drags the scene.
         public void drag(float dx, float dy) {
             // In a real app, you'd have some animation logic in here.
-            mPhi = dx;
+            mPhi+= dx/5;
             updateMatrices();
         }
 
