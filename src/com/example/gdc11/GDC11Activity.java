@@ -89,7 +89,17 @@ public class GDC11Activity extends Activity {
 public void onAccuracyChanged(Sensor sensor, int accuracy) {}
 
 @Override
-public void onSensorChanged(SensorEvent event) {}
+public void onSensorChanged(SensorEvent event) {
+final float dx=0.0f,dy=0.0f;
+queueEvent(new Runnable() {
+                    public void run() {
+                        // This Runnable will be executed on the render
+                        // thread.
+                        // In a real app, you'd want to divide these by
+                        // the display resolution first.
+                        mRenderer.drag(dx, dy);
+                    }});
+}
 
         @Override
         public boolean onTouchEvent(final MotionEvent e) {
