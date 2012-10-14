@@ -1,35 +1,24 @@
 package com.example.gdc11;
+import android.app.*;
+import android.content.*;
+import android.content.res.*;
+import android.content.res.Resources.*;
+import android.graphics.*;
+import android.hardware.*;
+import android.location.*;
+import android.opengl.*;
+import android.os.*;
+import android.util.*;
+import android.view.*;
+import java.io.*;
+import java.nio.*;
+import java.nio.channels.*;
+import java.nio.channels.FileChannel.*;
+import java.util.*;
+import javax.microedition.khronos.egl.*;
+import javax.microedition.khronos.opengles.*;
 
-import android.hardware.Sensor;
-import android.hardware.SensorEvent;
-import android.hardware.SensorEventListener;
-import android.hardware.SensorManager;
-
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.nio.MappedByteBuffer;
-import java.nio.channels.FileChannel;
-import java.nio.channels.FileChannel.MapMode;
-
-import javax.microedition.khronos.egl.EGLConfig;
-import javax.microedition.khronos.opengles.GL10;
-
-import android.app.Activity;
-import android.content.Context;
-import android.content.res.AssetFileDescriptor;
-import android.content.res.Resources.NotFoundException;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.opengl.ETC1Util;
-import android.opengl.GLES20;
-import android.opengl.GLSurfaceView;
-import android.opengl.GLUtils;
 import android.opengl.Matrix;
-import android.os.Bundle;
-import android.util.Log;
-import android.view.GestureDetector;
-import android.view.MotionEvent;
-import android.view.ScaleGestureDetector;
 
 // This is a slightly-more-complex-than Hello World for OpenGL.
 // It shows how to do fast resource loading, how to use compressed
@@ -59,13 +48,30 @@ public class GDC11Activity extends Activity {
     private class TouchGLView extends GLSurfaceView
             implements GestureDetector.OnGestureListener,
                        ScaleGestureDetector.OnScaleGestureListener,
-                       SensorEventListener  {
+                       SensorEventListener , LocationListener {
         private GDC11Renderer mRenderer;
         private GestureDetector mTapDetector;
         private ScaleGestureDetector mScaleDetector;
         private float mLastSpan = 0;
         private long mLastNonTapTouchEventTimeNS = 0;
+        
+           private  SensorManager sensorMgr = null;
+    private  List<Sensor> sensors = null;
+    private  Sensor sensorGrav = null;
+		private  Sensor sensorMag = null;
 
+		private LocationManager locationMgr;
+
+		private Location currentLocation;
+
+    private static final float grav[] = new float[3]; //Gravity (a.k.a accelerometer data)
+    private static final float mag[] = new float[3]; //Magnetic 
+    private static final float rotation[] = new float[9]; //Rotation matrix in Android format
+    private static final float orientation[] = new float[3]; //azimuth, pitch,
+    private static final int MIN_TIME = 30*1000;
+		private static final int MIN_DISTANCE = 10;
+
+		private GeomagneticField gmf;
         TouchGLView(Context c) {
             super(c);
             // Use Android's built-in gesture detectors to detect
@@ -73,11 +79,60 @@ public class GDC11Activity extends Activity {
             mTapDetector = new GestureDetector(c, this);
             mTapDetector.setIsLongpressEnabled(false);
             mScaleDetector = new ScaleGestureDetector(c, this);
+try {
+    
+            sensorMgr = (SensorManager) getSystemService(SENSOR_SERVICE);
 
-            SensorManager manager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
-            Sensor accelerometer = manager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
-            if(!manager.registerListener(this, accelerometer, SensorManager.SENSOR_DELAY_GAME)){}
+            sensors = sensorMgr.getSensorList(Sensor.TYPE_ACCELEROMETER);
+            if (sensors.size() > 0) sensorGrav = sensors.get(0);
 
+            sensors = sensorMgr.getSensorList(Sensor.TYPE_MAGNETIC_FIELD);
+            if (sensors.size() > 0) sensorMag = sensors.get(0);
+
+            sensorMgr.registerListener(this, sensorGrav, SensorManager.SENSOR_DELAY_GAME);
+            sensorMgr.registerListener(this, sensorMag, SensorManager.SENSOR_DELAY_GAME);
+
+            locationMgr = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+            locationMgr.requestLocationUpdates(LocationManager.GPS_PROVIDER, MIN_TIME, MIN_DISTANCE, this);
+
+            try {
+                /*defaulting to our place*/
+                Location hardFix = new Location("ATL");
+                hardFix.setLatitude(39.931261);
+                hardFix.setLongitude(-75.051267);
+                hardFix.setAltitude(1);
+
+                try {
+                    Location gps=locationMgr.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+                    Location network=locationMgr.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
+                    if(gps!=null)
+                    	currentLocation=(gps);
+                    else if (network!=null)
+                    	currentLocation=(network);
+                    else
+                    	currentLocation=(hardFix);
+                } catch (Exception ex2) {
+                    currentLocation=(hardFix);
+                }
+                onLocationChanged(currentLocation);
+            } catch (Exception ex) {
+            	ex.printStackTrace();
+            }
+        } catch (Exception ex1) {
+            try {
+                if (sensorMgr != null) {
+                    sensorMgr.unregisterListener(this, sensorGrav);
+                    sensorMgr.unregisterListener(this, sensorMag);
+                    sensorMgr = null;
+                }
+                if (locationMgr != null) {
+                    locationMgr.removeUpdates(this);
+                    locationMgr = null;
+                }
+            } catch (Exception ex2) {
+            	ex2.printStackTrace();
+            }
+        }
             // Create an OpenGL ES 2.0 context.
             setEGLContextClientVersion(2);
             if (kUseMultisampling)
@@ -90,14 +145,41 @@ public void onAccuracyChanged(Sensor sensor, int accuracy) {}
 
 @Override
 public void onSensorChanged(SensorEvent event) {
-final float x=event.values[0],y=event.values[1],z=event.values[2];
+        if (event.sensor.getType() == Sensor.TYPE_ACCELEROMETER) {
+            
+            grav[0] = event.values[0];
+            grav[1] = event.values[1];
+            grav[2] = event.values[2];
+        } else if (event.sensor.getType() == Sensor.TYPE_MAGNETIC_FIELD) {
+    
+            mag[0] = event.values[0];
+            mag[1] = event.values[1];
+            mag[2] = event.values[2];
+        }
+               //Get rotation matrix given the gravity and geomagnetic matrices
+        SensorManager.getRotationMatrix(rotation, null, grav, mag);
+        SensorManager.getOrientation(rotation, orientation);
+      //  floatBearing = orientation[0];
+
+        //Convert from radians to degrees
+      //  floatBearing = Math.toDegrees(floatBearing); //degrees east of true north (180 to -180)
+        
+        //Compensate for the difference between true north and magnetic north
+    //    if (gmf!=null) floatBearing += gmf.getDeclination();
+        
+        //adjust to 0-360
+    //    if (floatBearing<0) floatBearing+=360;
+        
+    //    GlobalData.setBearing((int)floatBearing);
+
+        
 queueEvent(new Runnable() {
                     public void run() {
                         // This Runnable will be executed on the render
                         // thread.
                         // In a real app, you'd want to divide these by
                         // the display resolution first.
-                        mRenderer.orientate(x,y,z,1.0f);
+                        mRenderer.orientate(rotation);
                     }});
 }
 
@@ -149,6 +231,39 @@ queueEvent(new Runnable() {
         @Override
         public void onLongPress(MotionEvent e) {
         }
+        
+    /**
+     * {@inheritDoc}
+     */
+	@Override
+	public void onProviderDisabled(String provider) {
+		//Ignore
+	}
+    
+    /**
+     * {@inheritDoc}
+     */
+	@Override
+	public void onProviderEnabled(String provider) {
+		//Ignore
+	}
+       @Override
+    public void onLocationChanged(Location location) {
+    	if (location==null) throw new NullPointerException();
+        currentLocation=(location);
+        gmf = new GeomagneticField((float) currentLocation.getLatitude(), 
+                                   (float) currentLocation.getLongitude(),
+                                   (float) currentLocation.getAltitude(), 
+                                   System.currentTimeMillis());
+    }
+    /**
+     * {@inheritDoc}
+     */
+	@Override
+	public void onStatusChanged(String provider, int status, Bundle extras) {
+		//Ignore
+	}
+
 
         @Override
         public boolean onScroll(MotionEvent e1, MotionEvent e2,
@@ -242,48 +357,6 @@ queueEvent(new Runnable() {
             Matrix.rotateM(mViewMatrix, 0, -90, 1, 0, 0);
 */
 
-float[] vX=new float[3];
-float[] vY=new float[3];
-float[] vZ=new float[3];
-
-vY[0]=gX;
-vY[1]=gY;
-vY[2]=gZ;
-float m=(float)Math.sqrt(vY[0]*vY[0]+vY[1]*vY[1]+vY[2]*vY[2]);
-vY[0]/=m;
-vY[1]/=m;
-vY[2]/=m;
-
-vZ[0]=0;
-vZ[0]=0;
-vZ[0]=1;
-vX[0]=vY[1]*vZ[2] - vY[2]*vZ[1];
-vX[1]=vY[2]*vZ[0] - vY[0]*vZ[2];
-vX[2]=vY[0]*vZ[1] - vY[1]*vZ[0];
-
-vZ[0]=vX[1]*vY[2] - vX[2]*vY[1];
-vZ[1]=vX[2]*vY[0] - vX[0]*vY[2];
-vZ[2]=vX[0]*vY[1] - vX[1]*vY[0];
-
-mViewMatrix[0]=vX[0];
-mViewMatrix[1]=vX[1];
-mViewMatrix[2]=vX[2];
-mViewMatrix[3]=0;
-
-mViewMatrix[4]=vY[0];
-mViewMatrix[5]=vY[1];
-mViewMatrix[6]=vY[2];
-mViewMatrix[7]=0;
-
-mViewMatrix[8]=vZ[0];
-mViewMatrix[9]=vZ[1];
-mViewMatrix[10]=vZ[2];
-mViewMatrix[11]=0;
-
-mViewMatrix[12]=0;
-mViewMatrix[13]=0;
-mViewMatrix[14]=0;
-mViewMatrix[15]=1;
 
             Matrix.multiplyMM(
                     mViewProjectionMatrix, 0, mProjectionMatrix, 0, mViewMatrix, 0);
@@ -313,11 +386,51 @@ mViewMatrix[15]=1;
         }
 
         // Set orientation
-        public void orientate(float dx, float dy, float dz, float dm) {
-            // In a real app, you'd have some animation logic in here.
-            gX=dx;
-            gY=dy;
-            gZ=dz;
+        public void orientate(float m[]) {
+        /*
+            
+float[] vX=new float[3];
+float[] vY=new float[3];
+float[] vZ=new float[3];
+
+vY[0]=gX;
+vY[1]=gY;
+vY[2]=gZ;
+float m=(float)Math.sqrt(vY[0]*vY[0]+vY[1]*vY[1]+vY[2]*vY[2]);
+vY[0]/=m;
+vY[1]/=m;
+vY[2]/=m;
+
+vZ[0]=0;
+vZ[0]=0;
+vZ[0]=1;
+vX[0]=vY[1]*vZ[2] - vY[2]*vZ[1];
+vX[1]=vY[2]*vZ[0] - vY[0]*vZ[2];
+vX[2]=vY[0]*vZ[1] - vY[1]*vZ[0];
+
+vZ[0]=vX[1]*vY[2] - vX[2]*vY[1];
+vZ[1]=vX[2]*vY[0] - vX[0]*vY[2];
+vZ[2]=vX[0]*vY[1] - vX[1]*vY[0];
+*/
+mViewMatrix[0]=m[0];
+mViewMatrix[1]=m[1];
+mViewMatrix[2]=m[2];
+mViewMatrix[3]=0;
+
+mViewMatrix[4]=m[3];
+mViewMatrix[5]=m[4];
+mViewMatrix[6]=m[5];
+mViewMatrix[7]=0;
+
+mViewMatrix[8]=m[6];
+mViewMatrix[9]=m[7];
+mViewMatrix[10]=m[8];
+mViewMatrix[11]=0;
+
+mViewMatrix[12]=0;
+mViewMatrix[13]=0;
+mViewMatrix[14]=0;
+mViewMatrix[15]=1;
             updateMatrices();
         }
 
