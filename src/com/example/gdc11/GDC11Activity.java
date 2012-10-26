@@ -183,6 +183,7 @@ public void onSensorChanged(SensorEvent event) {
         
 //queueEvent(new Runnable() {
   //                  public void run() {
+Toast.makeText(getApplicationContext(), "msg msg", Toast.LENGTH_SHORT).show();
                         mRenderer.orientate(rotation);
     //                }});
 //}//syncro
