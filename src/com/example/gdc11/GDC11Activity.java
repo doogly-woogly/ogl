@@ -81,6 +81,7 @@ public class GDC11Activity extends Activity {
             mTapDetector = new GestureDetector(c, this);
             mTapDetector.setIsLongpressEnabled(false);
             mScaleDetector = new ScaleGestureDetector(c, this);
+Toast.makeText(getApplicationContext(), "msg msg", Toast.LENGTH_SHORT).show();
 try {
     
             sensorMgr = (SensorManager) getSystemService(SENSOR_SERVICE);
@@ -184,7 +185,6 @@ public void onSensorChanged(SensorEvent event) {
         
 //queueEvent(new Runnable() {
   //                  public void run() {
-Toast.makeText(getApplicationContext(), "msg msg", Toast.LENGTH_SHORT).show();
                         mRenderer.orientate(rotation);
     //                }});
 //}//syncro
