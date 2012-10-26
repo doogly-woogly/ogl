@@ -603,7 +603,7 @@ for (cell temp : cells) {
 
         @Override
         public void onSurfaceCreated(GL10 unused, EGLConfig config) {
-    int vertexShader = loadShader(GLES20.GL_VERTEX_SHADER, vertexShaderCode);
+/*    int vertexShader = loadShader(GLES20.GL_VERTEX_SHADER, vertexShaderCode);
     int fragmentShader = loadShader(GLES20.GL_FRAGMENT_SHADER, fragmentShaderCode);
 
     mProgram = GLES20.glCreateProgram();             // create empty OpenGL Program
@@ -612,7 +612,7 @@ for (cell temp : cells) {
     GLES20.glLinkProgram(mProgram);                  // creates OpenGL program executables
 
     // get handle to the vertex shader's vPosition member
-    maPositionHandle = GLES20.glGetAttribLocation(mProgram, "vPosition");
+    maPositionHandle = GLES20.glGetAttribLocation(mProgram, "vPosition");*/
             // Load geometry.
             // NEVER load stuff on the render thread in real life!
             // You'd call fc.map() and b.load() on a loader thread, and
