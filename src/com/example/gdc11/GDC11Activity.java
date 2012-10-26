@@ -306,7 +306,7 @@ queueEvent(new Runnable() {
             // other views after this has been called.
             //final int x = Math.round(e.getX());
             //final int y = Math.round(e.getY());
-Toast.makeText(getApplicationContext(), String.valueOf(e.getX()), Toast.LENGTH_SHORT).show();
+Toast.makeText(getApplicationContext(), String.valueOf(e.getX())+String.valueOf(e.getY()), Toast.LENGTH_SHORT).show();
             // Run something on the render thread...
             queueEvent(new Runnable(){
                     public void run() {
