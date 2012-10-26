@@ -362,10 +362,10 @@ queueEvent(new Runnable() {
         // Updates mViewProjectionMatrix with the current camera position.
         private void updateMatrices() {
 
-            Matrix.setIdentityM(mViewMatrix, 0);
+ /*           Matrix.setIdentityM(mViewMatrix, 0);
             Matrix.translateM(mViewMatrix, 0, 0, 0, -mZ);
             Matrix.rotateM(mViewMatrix, 0, mPhi, 0, 1, 0);
-            Matrix.rotateM(mViewMatrix, 0, -90, 1, 0, 0);
+            Matrix.rotateM(mViewMatrix, 0, -90, 1, 0, 0);*/
 
 
 
@@ -664,6 +664,8 @@ mViewMatrix[15]=1;
             GLES20.glClearColor(0.7f, 0.7f, 0.7f, 1.0f);
             GLES20.glDisable(GLES20.GL_CULL_FACE);
             GLES20.glEnable(GLES20.GL_DEPTH_TEST);
+
+            Matrix.setIdentityM(mViewMatrix, 0);
         }
 
         // Like gluPerspective(), but writes the output to a Matrix.
