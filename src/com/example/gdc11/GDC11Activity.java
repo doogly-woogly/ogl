@@ -310,9 +310,9 @@ getWindowManager().getDefaultDisplay().getMetrics(dm);
             final float x = e.getX()/dm.widthPixels-0.5f;
             final float y = e.getY()/dm.heightPixels-0.5f;
 float tV[]=new float[3];
-tV[0]=mViewMatrix[6];
-tV[1]=mViewMatrix[7];
-tV[2]=mViewMatrix[8];
+tV[0]=rotation[6];
+tV[1]=rotation[7];
+tV[2]=rotation[8];
 //build direction vector
 //point a=0,0,0
 //point b=press
