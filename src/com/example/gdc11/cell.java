@@ -1,5 +1,7 @@
 package com.example.gdc11;
 
+import android.opengl.*;
+
 public class cell{
   private float pos[]=new float[4];
   public void Render(){
