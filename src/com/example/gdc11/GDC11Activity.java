@@ -324,7 +324,7 @@ tR[0]*=10;
 tR[1]*=10;
 tR[2]*=10;
 
-queueEvent(new Runnable() { public void run() {mRenderer.addCell(tR);  }});
+//queueEvent(new Runnable() { public void run() {mRenderer.addCell(tR);  }});
 Toast.makeText(getApplicationContext(), String.valueOf(tR[0])+' '+String.valueOf(tR[1])+' '+String.valueOf(tR[2]), Toast.LENGTH_SHORT).show();
 
             // Run something on the render thread...
@@ -360,7 +360,7 @@ Toast.makeText(getApplicationContext(), String.valueOf(tR[0])+' '+String.valueOf
     // thread.
     private class GDC11Renderer implements GLSurfaceView.Renderer {
 //Game objects
-private List<cell> cells;
+private List<cell> cells=new ArrayList<cell>();
         // FPS counter.
         private int mFrameCount = 0;
         private long mStartTime = System.nanoTime();
@@ -387,6 +387,7 @@ private List<cell> cells;
 
 private void addCell(float pos[]){
   cell n=new cell(pos);
+  cells.add(n);
 }
 
         // Updates mViewProjectionMatrix with the current camera position.
