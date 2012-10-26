@@ -185,10 +185,10 @@ public void onSensorChanged(SensorEvent event) {
     //    GlobalData.setBearing((int)floatBearing);
 
         
-//queueEvent(new Runnable() {
-  //                  public void run() {
+queueEvent(new Runnable() {
+                  public void run() {
                         mRenderer.orientate(rotation);
-    //                }});
+                    }});
 //}//syncro
 }
 
