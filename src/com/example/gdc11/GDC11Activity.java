@@ -455,8 +455,8 @@ mViewMatrix[15]=1;
             mFOV+=z;
 perspectiveM(
                     mProjectionMatrix,
-                    (float)Math.toRadians(45),
-                    mAspect, mFOV, 5.f);
+                    (float)Math.toRadians(mFOV),
+                    mAspect, 0.5f, 5.f);
             updateMatrices();
         }
 
