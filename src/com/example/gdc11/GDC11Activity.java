@@ -281,14 +281,7 @@ queueEvent(new Runnable() {
         public boolean onScroll(MotionEvent e1, MotionEvent e2,
                 final float dx, final float dy) {
             // Forward the drag event to the renderer.
-            queueEvent(new Runnable() {
-                    public void run() {
-                        // This Runnable will be executed on the render
-                        // thread.
-                        // In a real app, you'd want to divide these by
-                        // the display resolution first.
-                        mRenderer.drag(dx, dy);
-                    }});
+            queueEvent(new Runnable() { public void run() {mRenderer.drag(dx, dy);  }});
             mLastNonTapTouchEventTimeNS = System.nanoTime();
             return true;
         }
@@ -331,7 +324,7 @@ tR[0]*=10;
 tR[1]*=10;
 tR[2]*=10;
 
-
+queueEvent(new Runnable() { public void run() {mRenderer.addCell(tR);  }});
 Toast.makeText(getApplicationContext(), String.valueOf(tR[0])+' '+String.valueOf(tR[1])+' '+String.valueOf(tR[2]), Toast.LENGTH_SHORT).show();
 
             // Run something on the render thread...
@@ -393,6 +386,7 @@ private List<cell> cells;
 
 
 private void addCell(float pos[]){
+  cell n=new cell(pos);
 }
 
         // Updates mViewProjectionMatrix with the current camera position.

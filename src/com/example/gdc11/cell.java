@@ -8,6 +8,6 @@ public class cell{
     pos[0]=p[0];
     pos[1]=p[1];
     pos[2]=p[2];
-    pos[3]=p[3];
+  //  pos[3]=p[3];
   }
 }
