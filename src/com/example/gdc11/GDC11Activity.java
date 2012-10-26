@@ -452,7 +452,7 @@ mViewMatrix[15]=1;
         // Called from the UI when the user zooms the scene.
         public void zoom(float z) {
             //mZ = (float) Math.min(5, Math.max(mZ - z / 300, 1.6));
-            mFOV+=z;
+            mFOV+=z/300;
 perspectiveM(
                     mProjectionMatrix,
                     (float)Math.toRadians(mFOV),
