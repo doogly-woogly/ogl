@@ -307,20 +307,21 @@ DisplayMetrics dm = new DisplayMetrics();
 getWindowManager().getDefaultDisplay().getMetrics(dm);
             // Copy x/y into local variables, because |e| is changed and reused for
             // other views after this has been called.
-            final float x = e.getX();///dm.widthPixels-0.5f;
-            final float y = e.getY();///dm.heightPixels-0.5f;
-  // touch coords to normal coords of screen 
-       Vector2f normalCoords = (new Vector2f(x,y)).toNormalScreenCoordinates(Settings.viewPort[2],Settings.viewPort[3]);
-        // to sphere coords in 3D
-        Vector3f sphereVector = new Vector3f(normalCoords.x,normalCoords.y, FloatMath.sqrt(2-normalCoords.x*normalCoords.x-normalCoords.y*normalCoords.y));
-        //Get inverse matrix from ModelView Matrix
-        Matrix4f m = matrix.inverseMatrix();
-        //Get vector for current modelView 3D coords
-        Vector3f vector = m.multiplyToVector(vector);
-        // make normalize vector
-        vector.normalize();
-
-Toast.makeText(getApplicationContext(), String.valueOf(vector[0])+' '+String.valueOf(vector[1])+' '+String.valueOf(vector[2]), Toast.LENGTH_SHORT).show();
+            final float x = e.getX()/dm.widthPixels-0.5f;
+            final float y = e.getY()/dm.heightPixels-0.5f;
+float tV[]=new float[4];
+float tR[]=new float[4];
+//point forwards
+tV[0]=x;
+tV[1]=y;
+tV[2]=0.5f;//near clip
+//shift from view
+//tV[0]+=rotation[0];
+//build direction vector
+//point a=0,0,0
+//point b=press
+Matrix.multiplyMV(tR,0,rotation,0,tV,0);
+Toast.makeText(getApplicationContext(), String.valueOf(tR[0])+' '+String.valueOf(tR[1])+' '+String.valueOf(tR[2]), Toast.LENGTH_SHORT).show();
 
             // Run something on the render thread...
             queueEvent(new Runnable(){
