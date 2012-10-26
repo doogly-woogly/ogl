@@ -94,7 +94,7 @@ try {
 
             sensorMgr.registerListener(this, sensorGrav, SensorManager.SENSOR_DELAY_GAME);
             sensorMgr.registerListener(this, sensorMag, SensorManager.SENSOR_DELAY_GAME);
-Toast.makeText(getApplicationContext(), "msg msg", Toast.LENGTH_SHORT).show();
+
 //            locationMgr = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
 //            locationMgr.requestLocationUpdates(LocationManager.GPS_PROVIDER, MIN_TIME, MIN_DISTANCE, this);
 
@@ -306,7 +306,7 @@ queueEvent(new Runnable() {
             // other views after this has been called.
             //final int x = Math.round(e.getX());
             //final int y = Math.round(e.getY());
-
+Toast.makeText(getApplicationContext(), "msg msg", Toast.LENGTH_SHORT).show();
             // Run something on the render thread...
             queueEvent(new Runnable(){
                     public void run() {
