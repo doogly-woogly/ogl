@@ -312,7 +312,7 @@ getWindowManager().getDefaultDisplay().getMetrics(dm);
 float tV[]=new float[4];
 float tR[]=new float[4];
 //point forwards
-tV[0]=x;
+tV[0]=-x;
 tV[1]=y;
 tV[2]=0.5f;//near clip
 //shift from view
