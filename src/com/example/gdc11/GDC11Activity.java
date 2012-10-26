@@ -158,7 +158,6 @@ public void onSensorChanged(SensorEvent event) {
             grav[1] = event.values[1];
             grav[2] = event.values[2];
         } else if (event.sensor.getType() == Sensor.TYPE_MAGNETIC_FIELD) {
-    
             mag[0] = event.values[0];
             mag[1] = event.values[1];
             mag[2] = event.values[2];
@@ -182,14 +181,10 @@ public void onSensorChanged(SensorEvent event) {
     //    GlobalData.setBearing((int)floatBearing);
 
         
-queueEvent(new Runnable() {
-                    public void run() {
-                        // This Runnable will be executed on the render
-                        // thread.
-                        // In a real app, you'd want to divide these by
-                        // the display resolution first.
+//queueEvent(new Runnable() {
+  //                  public void run() {
                         mRenderer.orientate(rotation);
-                    }});
+    //                }});
 //}//syncro
 }
 
