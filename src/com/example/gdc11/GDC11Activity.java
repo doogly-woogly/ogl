@@ -330,6 +330,8 @@ tR[2]/=l;
 tR[0]*=10;
 tR[1]*=10;
 tR[2]*=10;
+
+
 Toast.makeText(getApplicationContext(), String.valueOf(tR[0])+' '+String.valueOf(tR[1])+' '+String.valueOf(tR[2]), Toast.LENGTH_SHORT).show();
 
             // Run something on the render thread...
@@ -388,6 +390,10 @@ private List<cell> cells;
         private float[] mViewProjectionMatrix = new float[16];
         private float[] mLightVector = { -2/3.f, -1/3.f, -2/3.f };  // Needs to be normalized
         private float[] mTransformedLightVector = new float[3];
+
+
+private void addCell(float pos[4]){
+}
 
         // Updates mViewProjectionMatrix with the current camera position.
         private void updateMatrices() {
@@ -529,6 +535,10 @@ perspectiveM(
             // glDrawElements() is broken as well, use a patched version here, too.
             GLES20Fix.glDrawElements(GLES20.GL_TRIANGLE_STRIP,
                     mNumTristripIndices, GLES20.GL_UNSIGNED_SHORT, 0);
+
+for (cell temp : cells) {
+  temp.Render();
+}
 
             ++mFrameCount;
             if (mFrameCount % 50 == 0) {
