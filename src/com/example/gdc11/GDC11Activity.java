@@ -309,7 +309,8 @@ getWindowManager().getDefaultDisplay().getMetrics(dm);
             // other views after this has been called.
             final float x = e.getX()/dm.widthPixels-0.5f;
             final float y = e.getY()/dm.heightPixels-0.5f;
-float tV[]=new float[3];
+float tV[]=new float[4];
+float tR[]=new float[4];
 //point forwards
 tV[0]=x;
 tV[1]=y;
@@ -319,8 +320,8 @@ tV[2]=0.5f;//near clip
 //build direction vector
 //point a=0,0,0
 //point b=press
-
-Toast.makeText(getApplicationContext(), String.valueOf(tV[0])+' '+String.valueOf(tV[1])+' '+String.valueOf(tV[2]), Toast.LENGTH_SHORT).show();
+Matrix.multiplyMV(tR,0,rotation,0,tV,0);
+Toast.makeText(getApplicationContext(), String.valueOf(tR[0])+' '+String.valueOf(tR[1])+' '+String.valueOf(tR[2]), Toast.LENGTH_SHORT).show();
 
             // Run something on the render thread...
             queueEvent(new Runnable(){
