@@ -68,6 +68,7 @@ public class GDC11Activity extends Activity {
     private static final float mag[] = new float[3]; //Magnetic 
     private static final float rotation[] = new float[9]; //Rotation matrix in Android format
     private static final float orientation[] = new float[3]; //azimuth, pitch,
+    private static final float glmat[] = new float[9];
     private static final int MIN_TIME = 30*1000;
 		private static final int MIN_DISTANCE = 10;
 
@@ -157,7 +158,7 @@ public void onSensorChanged(SensorEvent event) {
             mag[2] = event.values[2];
         }
                //Get rotation matrix given the gravity and geomagnetic matrices
-        SensorManager.getRotationMatrix(rotation, null, grav, mag);
+        SensorManager.getRotationMatrix(rotation, glmat, grav, mag);
         SensorManager.getOrientation(rotation, orientation);
       //  floatBearing = orientation[0];
 
