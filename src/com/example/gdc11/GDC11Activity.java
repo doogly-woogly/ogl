@@ -454,7 +454,7 @@ mViewMatrix[15]=1;
 float fovMin=15;
 float fovMax=140;
             //mZ = (float) Math.min(5, Math.max(mZ - z / 300, 1.6));
-            mFOV-=z/20;
+            mFOV-=z/12;
             if(mFOV<fovMin)mFOV=fovMin;
 if(mFOV>fovMax)mFOV=fovMax;
 
