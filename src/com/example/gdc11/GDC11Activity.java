@@ -452,7 +452,7 @@ mViewMatrix[15]=1;
         // Called from the UI when the user zooms the scene.
         public void zoom(float z) {
 float fovMin=15;
-float fovMax=140;
+float fovMax=100;
             //mZ = (float) Math.min(5, Math.max(mZ - z / 300, 1.6));
             mFOV-=z/12;
             if(mFOV<fovMin)mFOV=fovMin;
