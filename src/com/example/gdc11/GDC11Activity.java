@@ -331,7 +331,11 @@ Toast.makeText(getApplicationContext(), "msg msg", Toast.LENGTH_SHORT).show();
             return true;
         }
     }
+/***************************************
 
+
+
+********************************************************************************/
     // The renderer object. All methods of this class are called on the render
     // thread.
     private class GDC11Renderer implements GLSurfaceView.Renderer {
@@ -351,6 +355,7 @@ Toast.makeText(getApplicationContext(), "msg msg", Toast.LENGTH_SHORT).show();
         // Camera stuff.
         private float mPhi, mZ = 0.0f;
         private float gX,gY,gZ=0.0f;
+        private float mFOV=45.0f,mAspect=1.0f;
         private float[] mProjectionMatrix = new float[16];
         private float[] mViewMatrix = new float[16];
         private float[] mViewProjectionMatrix = new float[16];
@@ -441,34 +446,17 @@ mViewMatrix[13]=0;
 mViewMatrix[14]=0;
 mViewMatrix[15]=1;
 
-
-
-/*
-mViewMatrix[0]=0;
-mViewMatrix[1]=1;
-mViewMatrix[2]=0;
-mViewMatrix[3]=0;
-
-mViewMatrix[4]=1;
-mViewMatrix[5]=0;
-mViewMatrix[6]=0;
-mViewMatrix[7]=0;
-
-mViewMatrix[8]=0;
-mViewMatrix[9]=0;
-mViewMatrix[10]=1;
-mViewMatrix[11]=0;
-
-mViewMatrix[12]=0;
-mViewMatrix[13]=0;
-mViewMatrix[14]=0;
-mViewMatrix[15]=1;*/
             updateMatrices();
         }
 
         // Called from the UI when the user zooms the scene.
         public void zoom(float z) {
-            mZ = (float) Math.min(5, Math.max(mZ - z / 300, 1.6));
+            //mZ = (float) Math.min(5, Math.max(mZ - z / 300, 1.6));
+            mFOV+=z;
+perspectiveM(
+                    mProjectionMatrix,
+                    (float)Math.toRadians(45),
+                    mAspect, mFOV, 5.f);
             updateMatrices();
         }
 
@@ -696,11 +684,11 @@ mViewMatrix[15]=1;*/
         // This is called when the surface changes, e.g. after screen rotation.
         @Override
         public void onSurfaceChanged(GL10 unused, int width, int height) {
-            float aspect = width / (float)height;
+            mAspect = width / (float)height;
             perspectiveM(
                     mProjectionMatrix,
                     (float)Math.toRadians(45),
-                    aspect, 0.5f, 5.f);
+                    aspect, mFOV, 5.f);
             updateMatrices();
 
             // Necessary if the manifest contains |android:configChanges="orientation"|.
