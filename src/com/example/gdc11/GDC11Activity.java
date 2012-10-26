@@ -321,7 +321,7 @@ tV[2]=0.5f;//near clip
 //point a=0,0,0
 //point b=press
 Matrix.multiplyMV(tR,0,rotation,0,tV,0);
-float l=(float)Math.sqrt(tR[0]*tR[0]+tR[1]*tR[1]+tR[2]*tR[2]);
+float l=FloatMath.sqrt(tR[0]*tR[0]+tR[1]*tR[1]+tR[2]*tR[2]);
 tR[0]/=l;
 tR[1]/=l;
 tR[2]/=l;
