@@ -67,7 +67,7 @@ public class GDC11Activity extends Activity {
 
     private static final float grav[] = new float[3]; //Gravity (a.k.a accelerometer data)
     private static final float mag[] = new float[3]; //Magnetic 
-    private static final float rotation[] = new float[9]; //Rotation matrix in Android format
+    private static final float rotation[] = new float[16]; //Rotation matrix in Android format
     private static final float orientation[] = new float[3]; //azimuth, pitch,
     private static final float glmat[] = new float[9];
     private static final int MIN_TIME = 30*1000;
@@ -320,7 +320,7 @@ tV[2]=0.5f;//near clip
 //point a=0,0,0
 //point b=press
 
-Toast.makeText(getApplicationContext(), String.valueOf(tV[0])+String.valueOf(tV[1])+String.valueOf(tV[2]), Toast.LENGTH_SHORT).show();
+Toast.makeText(getApplicationContext(), String.valueOf(tV[0])+' '+String.valueOf(tV[1])+' '+String.valueOf(tV[2]), Toast.LENGTH_SHORT).show();
 
             // Run something on the render thread...
             queueEvent(new Runnable(){
@@ -444,22 +444,22 @@ vZ[2]=vX[0]*vY[1] - vX[1]*vY[0];
 mViewMatrix[0]=m[0];
 mViewMatrix[1]=m[1];
 mViewMatrix[2]=m[2];
-mViewMatrix[3]=0;
+mViewMatrix[3]=m[3];
 
-mViewMatrix[4]=m[3];
-mViewMatrix[5]=m[4];
-mViewMatrix[6]=m[5];
-mViewMatrix[7]=0;
+mViewMatrix[4]=m[4];
+mViewMatrix[5]=m[5];
+mViewMatrix[6]=m[6];
+mViewMatrix[7]=m[7];
 
-mViewMatrix[8]=m[6];
-mViewMatrix[9]=m[7];
-mViewMatrix[10]=m[8];
-mViewMatrix[11]=0;
+mViewMatrix[8]=m[8];
+mViewMatrix[9]=m[9];
+mViewMatrix[10]=m[10];
+mViewMatrix[11]=m[11];
 
-mViewMatrix[12]=0;
-mViewMatrix[13]=0;
-mViewMatrix[14]=0;
-mViewMatrix[15]=1;
+mViewMatrix[12]=m[12];
+mViewMatrix[13]=m[13];
+mViewMatrix[14]=m[14];
+mViewMatrix[15]=m[15];
 
             updateMatrices();
         }
