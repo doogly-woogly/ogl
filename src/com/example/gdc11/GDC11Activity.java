@@ -445,7 +445,7 @@ mViewMatrix[15]=1;
 
 
 
-
+/*
 mViewMatrix[0]=0;
 mViewMatrix[1]=1;
 mViewMatrix[2]=0;
@@ -464,7 +464,7 @@ mViewMatrix[11]=0;
 mViewMatrix[12]=0;
 mViewMatrix[13]=0;
 mViewMatrix[14]=0;
-mViewMatrix[15]=1;
+mViewMatrix[15]=1;*/
             updateMatrices();
         }
 
