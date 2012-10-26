@@ -302,22 +302,19 @@ queueEvent(new Runnable() {
             if ((System.nanoTime() - mLastNonTapTouchEventTimeNS) / 1e9f < kDeadTimeS)
                 return true;
 
+//screen size
+DisplayMetrics dm = new DisplayMetrics();
+getWindowManager().getDefaultDisplay().getMetrics(dm);
             // Copy x/y into local variables, because |e| is changed and reused for
             // other views after this has been called.
-            final int x = Math.round(e.getX());
-            final int y = Math.round(e.getY());
+            final float x = e.getX()/dm.widthPixels;
+            final float y = e.getY()/dm.heightPixels;
 
 //build direction vector
 //point a=0,0,0
 //point b=press
-DisplayMetrics dm = new DisplayMetrics();
-        getWindowManager().getDefaultDisplay().getMetrics(dm);
-        String str_ScreenSize = "The Android Screen is: "
-                    + dm.widthPixels
-                    + " x "
-                    + dm.heightPixels;
 
-Toast.makeText(getApplicationContext(), String.valueOf(dm.widthPixels)+String.valueOf(dm.heightPixels), Toast.LENGTH_SHORT).show();
+Toast.makeText(getApplicationContext(), String.valueOf(x)+String.valueOf(y), Toast.LENGTH_SHORT).show();
 
             // Run something on the render thread...
             queueEvent(new Runnable(){
