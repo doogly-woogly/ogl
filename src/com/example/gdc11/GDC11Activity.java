@@ -166,7 +166,7 @@ synchronized (this) {
         }
 
                //Get rotation matrix given the gravity and geomagnetic matrices
-if((mag[0]==0&&mag[1]==0&&mag[2]==0)||(grav[0]==0&&grav[1]==0&&grav[2]==0))return;
+//if((mag[0]==0&&mag[1]==0&&mag[2]==0)||(grav[0]==0&&grav[1]==0&&grav[2]==0))return;
         SensorManager.getRotationMatrix(rotation, glmat, grav, mag);
       //  SensorManager.getOrientation(rotation, orientation);
       //  floatBearing = orientation[0];
