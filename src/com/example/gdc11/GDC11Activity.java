@@ -687,8 +687,8 @@ perspectiveM(
             mAspect = width / (float)height;
             perspectiveM(
                     mProjectionMatrix,
-                    (float)Math.toRadians(45),
-                    mAspect, mFOV, 5.f);
+                    (float)Math.toRadians(mFOV),
+                    mAspect, 0.5f, 5.f);
             updateMatrices();
 
             // Necessary if the manifest contains |android:configChanges="orientation"|.
