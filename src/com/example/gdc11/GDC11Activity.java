@@ -306,7 +306,7 @@ queueEvent(new Runnable() {
             // other views after this has been called.
             //final int x = Math.round(e.getX());
             //final int y = Math.round(e.getY());
-Toast.makeText(getApplicationContext(), "msg msg", Toast.LENGTH_SHORT).show();
+Toast.makeText(getApplicationContext(), String.valueOf(e.getX()), Toast.LENGTH_SHORT).show();
             // Run something on the render thread...
             queueEvent(new Runnable(){
                     public void run() {
@@ -451,8 +451,8 @@ mViewMatrix[15]=1;
 
         // Called from the UI when the user zooms the scene.
         public void zoom(float z) {
-float fovMin=15;
-float fovMax=100;
+float fovMin=10;
+float fovMax=90;
             //mZ = (float) Math.min(5, Math.max(mZ - z / 300, 1.6));
             mFOV-=z/12;
             if(mFOV<fovMin)mFOV=fovMin;
