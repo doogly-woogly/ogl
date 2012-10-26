@@ -154,7 +154,6 @@ public void onAccuracyChanged(Sensor sensor, int accuracy) {}
 public void onSensorChanged(SensorEvent event) {
 //synchronized (this) {
         if (event.sensor.getType() == Sensor.TYPE_ACCELEROMETER) {
-            
             grav[0] = event.values[0];
             grav[1] = event.values[1];
             grav[2] = event.values[2];
@@ -167,7 +166,7 @@ public void onSensorChanged(SensorEvent event) {
 
                //Get rotation matrix given the gravity and geomagnetic matrices
 //if((mag[0]==0&&mag[1]==0&&mag[2]==0)||(grav[0]==0&&grav[1]==0&&grav[2]==0))return;
-        SensorManager.getRotationMatrix(rotation, glmat, grav, mag);
+        SensorManager.getRotationMatrix(rotation, null, grav, mag);
       //  SensorManager.getOrientation(rotation, orientation);
       //  floatBearing = orientation[0];
 
