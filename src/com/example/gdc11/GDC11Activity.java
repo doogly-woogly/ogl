@@ -317,7 +317,7 @@ DisplayMetrics dm = new DisplayMetrics();
                     + " x "
                     + dm.heightPixels;
 
-Toast.makeText(getApplicationContext(), String.valueOf(x/dm.widthPixels)+String.valueOf(y/dm.heightPixels), Toast.LENGTH_SHORT).show();
+Toast.makeText(getApplicationContext(), String.valueOf(dm.widthPixels)+String.valueOf(dm.heightPixels), Toast.LENGTH_SHORT).show();
 
             // Run something on the render thread...
             queueEvent(new Runnable(){
