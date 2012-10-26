@@ -5,11 +5,11 @@ import android.opengl.*;
 public class cell{
   private float pos[]=new float[4];
   public void Render(){
-GLfloat vertices[] = {1,0,0, 0,1,0, -1,0,0};
-glEnableClientState(GL_VERTEX_ARRAY);
-glVertexPointer(3, GL_FLOAT, 0, vertices);
-glDrawArrays(GL_TRIANGLES, 0, 3);
-glDisableClientState(GL_VERTEX_ARRAY);
+    GLES20.glUseProgram(mProgram);
+
+    GLES20.glVertexAttribPointer(maPositionHandle, 4, GLES20.GL_FLOAT, false, 12, triangleVB);
+    GLES20.glEnableVertexAttribArray(maPositionHandle);
+    GLES20.glDrawArrays(GLES20.GL_LINE_LOOP, 0, 4);
   }
   public cell(float p[]){
     pos[0]=p[0];
