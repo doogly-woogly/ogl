@@ -81,7 +81,7 @@ public class GDC11Activity extends Activity {
             mTapDetector = new GestureDetector(c, this);
             mTapDetector.setIsLongpressEnabled(false);
             mScaleDetector = new ScaleGestureDetector(c, this);
-Toast.makeText(getApplicationContext(), "msg msg", Toast.LENGTH_SHORT).show();
+
 try {
     
             sensorMgr = (SensorManager) getSystemService(SENSOR_SERVICE);
@@ -97,6 +97,8 @@ try {
 
             locationMgr = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
             locationMgr.requestLocationUpdates(LocationManager.GPS_PROVIDER, MIN_TIME, MIN_DISTANCE, this);
+
+Toast.makeText(getApplicationContext(), "msg msg", Toast.LENGTH_SHORT).show();
 
             try {
                 /*defaulting to our place*/
