@@ -35,16 +35,16 @@ private final int mColorDataSize = 4;
  
 
   public void Render(){
-aTriangleBuffer.position(mPositionOffset);
+mTriangle1Vertices.position(mPositionOffset);
     GLES20.glVertexAttribPointer(mPositionHandle, mPositionDataSize, GLES20.GL_FLOAT, false,
-            mStrideBytes, aTriangleBuffer);
+            mStrideBytes, mTriangle1Vertices);
  
     GLES20.glEnableVertexAttribArray(mPositionHandle);
  
     // Pass in the color information
-    aTriangleBuffer.position(mColorOffset);
+    mTriangle1Vertices.position(mColorOffset);
     GLES20.glVertexAttribPointer(mColorHandle, mColorDataSize, GLES20.GL_FLOAT, false,
-            mStrideBytes, aTriangleBuffer);
+            mStrideBytes, mTriangle1Vertices);
  
     GLES20.glEnableVertexAttribArray(mColorHandle);
  
