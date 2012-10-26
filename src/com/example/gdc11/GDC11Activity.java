@@ -139,6 +139,12 @@ try {
             if (kUseMultisampling)
                 setEGLConfigChooser(mConfigChooser = new MultisampleConfigChooser());
             setRenderer(mRenderer = new GDC11Renderer());
+		grav[0]=0;
+		grav[1]=0;
+		grav[2]=0;
+		mag[0]=0;
+		mag[1]=0;
+		mag[2]=0;
         }
 
 @Override
