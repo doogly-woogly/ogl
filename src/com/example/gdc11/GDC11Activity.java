@@ -1,5 +1,7 @@
 package com.example.gdc11;
 
+import com.example.cell;
+
 import android.app.*;
 import android.content.*;
 import android.content.res.*;
