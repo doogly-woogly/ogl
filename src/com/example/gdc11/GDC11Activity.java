@@ -321,6 +321,9 @@ tV[2]=0.5f;//near clip
 //point a=0,0,0
 //point b=press
 Matrix.multiplyMV(tR,0,rotation,0,tV,0);
+tR[0]*=10;
+tR[1]*=10;
+tR[2]*=10;
 Toast.makeText(getApplicationContext(), String.valueOf(tR[0])+' '+String.valueOf(tR[1])+' '+String.valueOf(tR[2]), Toast.LENGTH_SHORT).show();
 
             // Run something on the render thread...
