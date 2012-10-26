@@ -146,6 +146,7 @@ public void onAccuracyChanged(Sensor sensor, int accuracy) {}
 
 @Override
 public void onSensorChanged(SensorEvent event) {
+synchronized (this) {
         if (event.sensor.getType() == Sensor.TYPE_ACCELEROMETER) {
             
             grav[0] = event.values[0];
@@ -157,9 +158,11 @@ public void onSensorChanged(SensorEvent event) {
             mag[1] = event.values[1];
             mag[2] = event.values[2];
         }
+
                //Get rotation matrix given the gravity and geomagnetic matrices
+if((mag[0]==0&&mag[1]==0&&mag[2]==0)||(grav[0]==0&&grav[1]==0&&grav[2]==0))return;
         SensorManager.getRotationMatrix(rotation, glmat, grav, mag);
-        SensorManager.getOrientation(rotation, orientation);
+      //  SensorManager.getOrientation(rotation, orientation);
       //  floatBearing = orientation[0];
 
         //Convert from radians to degrees
@@ -182,6 +185,7 @@ queueEvent(new Runnable() {
                         // the display resolution first.
                         mRenderer.orientate(rotation);
                     }});
+}
 }
 
         @Override
