@@ -152,7 +152,7 @@ public void onAccuracyChanged(Sensor sensor, int accuracy) {}
 
 @Override
 public void onSensorChanged(SensorEvent event) {
-synchronized (this) {
+//synchronized (this) {
         if (event.sensor.getType() == Sensor.TYPE_ACCELEROMETER) {
             
             grav[0] = event.values[0];
@@ -191,7 +191,7 @@ queueEvent(new Runnable() {
                         // the display resolution first.
                         mRenderer.orientate(rotation);
                     }});
-}
+//}//syncro
 }
 
         @Override
