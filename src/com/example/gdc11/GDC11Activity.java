@@ -304,9 +304,21 @@ queueEvent(new Runnable() {
 
             // Copy x/y into local variables, because |e| is changed and reused for
             // other views after this has been called.
-            //final int x = Math.round(e.getX());
-            //final int y = Math.round(e.getY());
-Toast.makeText(getApplicationContext(), String.valueOf(e.getX())+String.valueOf(e.getY()), Toast.LENGTH_SHORT).show();
+            final int x = Math.round(e.getX());
+            final int y = Math.round(e.getY());
+
+//build direction vector
+//point a=0,0,0
+//point b=press
+DisplayMetrics dm = new DisplayMetrics();
+        getWindowManager().getDefaultDisplay().getMetrics(dm);
+        String str_ScreenSize = "The Android Screen is: "
+                    + dm.widthPixels
+                    + " x "
+                    + dm.heightPixels;
+
+Toast.makeText(getApplicationContext(), String.valueOf(x/dm.widthPixels)+String.valueOf(y/dm.heightPixels), Toast.LENGTH_SHORT).show();
+
             // Run something on the render thread...
             queueEvent(new Runnable(){
                     public void run() {
