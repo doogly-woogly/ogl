@@ -446,13 +446,13 @@ mViewMatrix[15]=1;
 
 
 
-mViewMatrix[0]=1;
-mViewMatrix[1]=0;
+mViewMatrix[0]=0;
+mViewMatrix[1]=1;
 mViewMatrix[2]=0;
 mViewMatrix[3]=0;
 
-mViewMatrix[4]=0;
-mViewMatrix[5]=1;
+mViewMatrix[4]=1;
+mViewMatrix[5]=0;
 mViewMatrix[6]=0;
 mViewMatrix[7]=0;
 
