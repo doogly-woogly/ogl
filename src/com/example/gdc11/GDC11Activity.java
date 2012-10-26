@@ -307,14 +307,17 @@ DisplayMetrics dm = new DisplayMetrics();
 getWindowManager().getDefaultDisplay().getMetrics(dm);
             // Copy x/y into local variables, because |e| is changed and reused for
             // other views after this has been called.
-            final float x = e.getX()/dm.widthPixels;
-            final float y = e.getY()/dm.heightPixels;
-
+            final float x = e.getX()/dm.widthPixels-0.5f;
+            final float y = e.getY()/dm.heightPixels-0.5f;
+float tV[3];
+tV[0]=mViewMatrix[0];
+tV[1]=mViewMatrix[1];
+tV[2]=mViewMatrix[2];
 //build direction vector
 //point a=0,0,0
 //point b=press
 
-Toast.makeText(getApplicationContext(), String.valueOf(x)+String.valueOf(y), Toast.LENGTH_SHORT).show();
+Toast.makeText(getApplicationContext(), String.valueOf(tV[0])+String.valueOf(tV[1])+String.valueOf(tV[2]), Toast.LENGTH_SHORT).show();
 
             // Run something on the render thread...
             queueEvent(new Runnable(){
