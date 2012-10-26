@@ -1,6 +1,6 @@
 package com.example.gdc11;
 
-import com.example.cell;
+import com.example.gdc11.cell;
 
 import android.app.*;
 import android.content.*;
@@ -364,6 +364,8 @@ Toast.makeText(getApplicationContext(), String.valueOf(tR[0])+' '+String.valueOf
     // The renderer object. All methods of this class are called on the render
     // thread.
     private class GDC11Renderer implements GLSurfaceView.Renderer {
+//Game objects
+private List<cell> cells;
         // FPS counter.
         private int mFrameCount = 0;
         private long mStartTime = System.nanoTime();
