@@ -1,4 +1,5 @@
 package com.example.gdc11;
+
 import android.app.*;
 import android.content.*;
 import android.content.res.*;
@@ -315,11 +316,7 @@ float tR[]=new float[4];
 tV[0]=-x;
 tV[1]=y;
 tV[2]=0.5f;//near clip
-//shift from view
-//tV[0]+=rotation[0];
 //build direction vector
-//point a=0,0,0
-//point b=press
 float invRot[]=new float[16];
 Matrix.invertM(invRot,0,rotation,0);
 Matrix.multiplyMV(tR,0,invRot,0,tV,0);
