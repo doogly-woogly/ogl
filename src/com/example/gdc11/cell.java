@@ -1,9 +1,14 @@
 package com.example.gdc11;
 
 import android.opengl.*;
+import java.nio.*;
 
 public class cell{
-  private float pos[]=new float[4];
+	private float pos[]=new float[4];
+
+	private FloatBuffer triangleVB;
+
+	private int maPositionHandle;
   public void Render(){
     GLES20.glUseProgram(mProgram);
 
