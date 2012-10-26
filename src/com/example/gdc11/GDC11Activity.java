@@ -392,7 +392,7 @@ private List<cell> cells;
         private float[] mTransformedLightVector = new float[3];
 
 
-private void addCell(float pos[4]){
+private void addCell(float pos[]){
 }
 
         // Updates mViewProjectionMatrix with the current camera position.
